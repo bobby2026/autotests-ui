@@ -39,6 +39,7 @@ class Settings(BaseSettings):
     test_data: TestData
     videos_dir: DirectoryPath
     tracing_dir: DirectoryPath
+    allure_results_dir: DirectoryPath  # Добавили новое поле
     browser_state_file: FilePath
 
     def get_base_url(self) -> str:
@@ -48,15 +49,18 @@ class Settings(BaseSettings):
     def initialize(cls) -> Self:
         videos_dir = DirectoryPath("./videos")
         tracing_dir = DirectoryPath("./tracing")
+        allure_results_dir = DirectoryPath("./allure-results")  # Создаем объект пути к папке
         browser_state_file = FilePath("browser-state.json")
 
         videos_dir.mkdir(exist_ok=True)
         tracing_dir.mkdir(exist_ok=True)
+        allure_results_dir.mkdir(exist_ok=True)  # Создаем папку allure-results, если она не существует
         browser_state_file.touch(exist_ok=True)
 
         return Settings(
             videos_dir=videos_dir,
             tracing_dir=tracing_dir,
+            allure_results_dir=allure_results_dir,  # Передаем allure_results_dir в инициализацию настроек
             browser_state_file=browser_state_file
         )
 
