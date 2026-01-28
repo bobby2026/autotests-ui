@@ -24,7 +24,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4  # Используем GitHub Action для установки Python
         with:
-          python-version: '3.11'  # Устанавливаем версию Python 3.11 (можно заменить на другую версию)
+          python-version: '3.12'  # Устанавливаем версию Python 3.11 (можно заменить на другую версию)
 
       # 3. Шаг для установки всех зависимостей проекта
       - name: Install dependencies
